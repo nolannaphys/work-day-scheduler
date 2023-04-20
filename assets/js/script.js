@@ -35,27 +35,69 @@ $(function () {
     });
   }
 
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
-    //
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-    //
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
-    //
-  })
+  $('#currentDay').text(`${todaysDate}`);
+
+  $.each(timeSlot, function (key, value){
+    let idHour = value.id;
+    if (value.hour < currentHour){
+    $(idHour).removeClass('future');
+    $(idHour).removeClass('present');
+    $(idHour).addClass('past');
+  } else if (value.hour == currentHour){
+    $(idHour).removeClass('future');
+    $(idHour).removeClass('past');
+    $(idHour).addClass('present');
+  } else {
+    $(idHour).removeClass('present');
+    $(idHour).removeClass('past');
+    $(idHour).addClass('future');
+  }
+});
+
+$('.saveBtn').click(function () {
+  let parentEl = $(this).parent().attr('id');
+  let parentElId = `#${parentEl}`;
+  let textField = $(parentElId).find('textarea').val();
+  let userEntry = {
+    day: todaysDate, hour: parentEl, event: textField,
+  };
+  
+  let entryHourId;
+
+  if (localStorage.getItem('day-planner-events') !== null){
+    retrieveUserEntry = JSON.parse(localStorage.getItem('day-planner-events'));
+    retrieveUserEntry.push(userEntry);
+    localStorage.setItem('day-planner-events', JSON.stringify(retrieveUserEntry));
+
+    $.each(retrieveUserEntry, function (key, value){
+      if (value.day === todaysDate){
+        entryHourId = `#${value.hour}`;
+        $(entryHourId).find('textarea').text(value.event);
+      }
+    });
+  }
+
+  else {
+      retrieveUserEntry.push(userEntry);
+      localStorage.setItem('day-planner-events', JSON.stringify(retrieveUserEntry));
+  }
+
+  let confirmationMessage = $('#confirmationMessage');
+  let storageMessage = $('.storage-message');
+
+  confirmationMessage.css('color', 'black');
+  storageMessage.css('color', 'red');
+
+  setTimeout(function (){
+    confirmationMessage.css('color', 'transparent');
+    storageMessage.css('color', 'transparent');
+  }, 2000);
+});
+});
+
     // TODO: Add code to display the current date in the header of the page.
-    var dateTime = function() { 
-      $('#currentDay').text(dayjs().format('dddd, MMMM D, YYYY h:mm A'));
-      console.log('test')
-    }
-    setInterval(dateTime, 1000);
+    // var dateTime = function() { 
+    //   $('#currentDay').text(dayjs().format('dddd, MMMM D, YYYY h:mm A'));
+    //   console.log('test')
+    // }
+    // setInterval(dateTime, 1000);

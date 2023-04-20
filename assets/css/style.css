@@ -1,8 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    text-align: center;
+    padding: 1em;
   }
   
+/* Header Style */
+
+  #currentDay.lead{
+    border-bottom: 3px solid black;
+  }
+
+  #confirmationMessage, .storage-message{
+    color: transparent
+  }
+
+/* Time Blocks Style */
+
   textarea {
     background: transparent;
     border: none;
@@ -45,6 +64,8 @@ body {
     color: white;
   }
   
+/* Button Style */
+
   .saveBtn {
     border-left: 1px solid black;
     border-top-right-radius: 15px;
