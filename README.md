@@ -1,4 +1,4 @@
-# work-day-scheduler
+# Work-Day-Scheduler
 
 ## Description
 
@@ -10,7 +10,8 @@ N/A
 
 ## Usage
 
-![Screenshot of the Webpage]()
+Enter in events based on the time they will take place, then press the save button. When you reload the page the saved information will remain. Grey indicates times that have past, red indicates the present, and Green represents future times.
+![Screenshot of the Webpage](assets/images/webpagescreenshot.png)
 
 ## Credits
 
@@ -57,9 +58,9 @@ THEN the saved events persist
 The following animation demonstrates the application functionality:
 
 <!-- @TODO: create ticket to review/update image) -->
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+<!-- ![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif) -->
 
-## Grading Requirements
+<!-- ## Grading Requirements
 
 > **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
 >
@@ -118,4 +119,4 @@ You are required to submit the following for review:
 * The URL of the GitHub repository, with a unique name and a README describing the project
 
 - - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved. -->
+© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved. --> -->
